@@ -351,9 +351,10 @@ window.addEventListener("keydown", (e) => (keys[e.code] = true));
 window.addEventListener("keyup", (e) => (keys[e.code] = false));
 
 document.addEventListener("click", function() {
-    mainMenuMusic.play().catch(error => {
-        console.log("Ошибка воспроизведения музыки главного меню:", error);
-    });
+    console.log("Попытка воспроизвести mainMenuMusic");
+    mainMenuMusic.play()
+        .then(() => console.log("Музыка главного меню воспроизводится"))
+        .catch(error => console.log("Ошибка воспроизведения музыки главного меню:", error));
 }, { once: true });
 
 howToPlayBtn.addEventListener("click", () => {
@@ -589,6 +590,8 @@ function restartGame() {
     backgroundMusic.pause();
     backgroundMusic.currentTime = 0;
     mainMenuMusic.play();
+    .then(() => console.log("Музыка главного меню запущена после рестарта"))
+        .catch(error => console.error("Ошибка при запуске музыки главного меню:", error));
     mainScreen.style.display = "flex";
     canvas.style.display = "none";
     gameOverModal.style.display = "none";
