@@ -351,10 +351,10 @@ window.addEventListener("keydown", (e) => (keys[e.code] = true));
 window.addEventListener("keyup", (e) => (keys[e.code] = false));
 
 document.addEventListener("click", function() {
-    console.log("Попытка воспроизвести mainMenuMusic");
+    const mainMenuMusic = document.getElementById("mainMenuMusic");
     mainMenuMusic.play()
         .then(() => console.log("Музыка главного меню воспроизводится"))
-        .catch(error => console.log("Ошибка воспроизведения музыки главного меню:", error));
+        .catch(error => console.log("Ошибка воспроизведения:", error));
 }, { once: true });
 
 howToPlayBtn.addEventListener("click", () => {
