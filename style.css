@@ -178,8 +178,8 @@ body {
 }
 .social-links-right {
     position: fixed;
-    top: 130px; /* Такая же высота, как у левых */
-    right: 130px; /* Отступ справа, симметрично левым */
+    top: 130px; 
+    right: 130px;
     display: flex;
     flex-direction: column;
     gap: 50px; /* Тот же промежуток */
@@ -199,35 +199,35 @@ body {
 }
 
 .goats-title {
-    position: absolute; /* Позиционируем относительно .social-links */
-    top:  -70px; /* Сдвигаем вверх от верхней границы .social-links */
-    left: 50%; /* Центрируем по горизонтали */
-    transform: translateX(-50%); /* Точное центрирование */
-    color: #ffffff; /* Ярко-розовый, как у заголовка */
-    font-family: 'SuperMario', sans-serif; /* Тот же шрифт */
-    font-size: 48px; /* Размер текста */
+    position: absolute; 
+    top:  -70px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    color: #ffffff; 
+    font-family: 'SuperMario', sans-serif; 
+    font-size: 48px; 
     text-shadow: 
         -2px -2px 0 #000,  
         2px -2px 0 #000,  
         -2px  2px 0 #000,  
-        2px  2px 0 #000; /* Черная обводка */
-    margin: 0; /* Убираем отступы */
+        2px  2px 0 #000; 
+    margin: 0; 
 }
 
 .frens-title {
-    position: absolute; /* Позиционируем относительно .social-links */
-    top:  -70px; /* Сдвигаем вверх от верхней границы .social-links */
-    left: 50%; /* Центрируем по горизонтали */
-    transform: translateX(-50%); /* Точное центрирование */
-    color: #ffffff; /* Ярко-розовый, как у заголовка */
-    font-family: 'SuperMario', sans-serif; /* Тот же шрифт */
-    font-size: 48px; /* Размер текста */
+    position: absolute;
+    top:  -70px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    color: #ffffff; 
+    font-family: 'SuperMario', sans-serif; 
+    font-size: 48px; 
     text-shadow: 
         -2px -2px 0 #000,  
         2px -2px 0 #000,  
         -2px  2px 0 #000,  
-        2px  2px 0 #000; /* Черная обводка */
-    margin: 0; /* Убираем отступы */
+        2px  2px 0 #000; 
+    margin: 0; 
 }
 
 .social-link {
