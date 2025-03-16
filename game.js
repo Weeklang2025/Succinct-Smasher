@@ -1,4 +1,4 @@
-console.log("Checking lastScoreElement:", document.getElementById("lastScore"));
+main_menu_music.mp3console.log("Checking lastScoreElement:", document.getElementById("lastScore"));
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 const mainScreen = document.getElementById("mainScreen");
@@ -351,6 +351,11 @@ window.addEventListener("keydown", (e) => (keys[e.code] = true));
 window.addEventListener("keyup", (e) => (keys[e.code] = false));
 
 mainMenuMusic.play();
+document.addEventListener("click", function() {
+    audio.play().catch(error => {
+        console.log("Ошибка воспроизведения:", error);
+    });
+}, { once: true });
 
 howToPlayBtn.addEventListener("click", () => {
     howToPlayModal.style.display = "flex";
