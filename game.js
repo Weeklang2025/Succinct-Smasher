@@ -591,7 +591,7 @@ function restartGame() {
     backgroundMusic.currentTime = 0;
     mainMenuMusic.play()
     .then(() => console.log
-    .catch(error => console.error("Error when starting main menu music:", error));
+    .then(() => console.log("Main menu music restarted successfully"))
     mainScreen.style.display = "flex";
     canvas.style.display = "none";
     gameOverModal.style.display = "none";
