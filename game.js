@@ -589,9 +589,9 @@ function restartGame() {
     deathSound.currentTime = 0;
     backgroundMusic.pause();
     backgroundMusic.currentTime = 0;
-    mainMenuMusic.play();
+    mainMenuMusic.play()
     .then(() => console.log("Музыка главного меню запущена после рестарта"))
-        .catch(error => console.error("Ошибка при запуске музыки главного меню:", error));
+    .catch(error => console.error("Ошибка при запуске музыки главного меню:", error));
     mainScreen.style.display = "flex";
     canvas.style.display = "none";
     gameOverModal.style.display = "none";
