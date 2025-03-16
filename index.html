@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Game</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @font-face {
+            font-family: 'SuperMario';
+            src: url('fonts/SuperMario256.ttf') format('truetype');
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            background-color: #ff96e5; /* Розовый фон для всего */
+        }
+        #mainScreen, #howToPlayModal, #gameOverModal, #gameCanvas {
+            font-family: 'SuperMario', sans-serif;
+        }
+        #mainScreen {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 1200px;
+            height: 800px;
+            background: transparent;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        #menuImage {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        #mainScreen h1 {
+            font-size: 84px;
+            color: #fc0fc0;
+            text-shadow: 
+                -2px -2px 0 #000,  
+                2px -2px 0 #000,  
+                -2px  2px 0 #000,  
+                2px  2px 0 #000;
+            margin: 10px;
+        }
+        #mainScreenLastScore {
+            font-size: 56px;
+            color: #ff0000;
+            text-shadow: 
+                -2px -2px 0 #000,  
+                2px -2px 0 #000,  
+                -2px  2px 0 #000,  
+                2px  2px 0 #000;
+            margin: 20px 0;
+        }
+        #startPrompt {
+            font-size: 24px;
+            color: white;
+            text-shadow: 2px 2px 4px black;
+            margin: 20px 0;
+        }
+        #howToPlayBtn {
+            font-size: 24px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        #howToPlayModal, #gameOverModal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            color: black;
+            font-size: 20px;
+            z-index: 10;
+        }
+        #howToPlayModal p {
+            color: black;
+            font-size: 20px;
+            margin: 0 0 10px 0;
+        }
+        #howToPlayModal button {
+            font-size: 20px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+        }
+        #gameOverModal p {
+            color: black;
+            font-size: 20px;
+            margin: 0 0 10px 0;
+        }
+        #gameOverModal span {
+            color: #ff4500;
+        }
+        #gameOverModal button {
+            font-size: 20px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+        }
+        #gameCanvas {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 1200px;
+            height: 800px;
+        }
+    </style>
+</head>
+<body>
+    <div id="mainScreen">
+        <img src="images/menu_background.jpg" alt="Menu Background" id="menuImage">
+        <h1>Succinct Smasher</h1>
+        <p id="mainScreenLastScore">Last Score: <span id="mainLastScore">0</span></p>
+        <p id="startPrompt">Press any key to start</p>
+        <button id="howToPlayBtn">How to Play</button>
+    </div>
+    <div class="social-links">
+        <h3 class="goats-title">GOATS</h3>
+        <a href="https://twitter.com/SuccinctLabs" target="_blank" class="social-link">
+            <img src="images/succinct.png" alt="Twitter 1">
+        </a>
+        <a href="https://twitter.com/pumatheuma" target="_blank" class="social-link">
+            <img src="images/uma.jpg" alt="Twitter 2">
+        </a>
+        <a href="https://twitter.com/0xCRASHOUT" target="_blank" class="social-link">
+            <img src="images/yinger.jpg" alt="Twitter 3">
+        </a>
+        <a href="https://twitter.com/nair_advaith" target="_blank" class="social-link">
+            <img src="images/nair.jpg" alt="Twitter 4">
+        </a>
+        <a href="https://media1.tenor.com/m/chfV1bXkdF8AAAAd/goonicide.gif" target="_blank" class="social-link">
+            <img src="images/goontwitter.png" alt="Twitter 5">
+        </a>
+        <a href="https://twitter.com/Yurii_week" target="_blank" class="social-link">
+            <img src="weeklang.png" alt="Twitter 6">
+        </a>
+    </div>
+    <div class="social-links-right">
+        <h3 class="frens-title">FRENS</h3>
+        <a href="https://x.com/mekoyaki" target="_blank" class="social-link">
+            <img src="images/yumeko.jpg" alt="Twitter 1">
+        </a>
+        <a href="https://x.com/stepaks576" target="_blank" class="social-link">
+            <img src="images/stepaks.jpg" alt="Twitter 2">
+        </a>
+        <a href="https://x.com/pixnvm" target="_blank" class="social-link">
+            <img src="images/pixnvm.jpg" alt="Twitter 3">
+        </a>
+        <a href="https://twitter.com/Avaderdis" target="_blank" class="social-link">
+            <img src="images/avader.jpg" alt="Twitter 4">
+        </a>
+        <a href="https://x.com/godblessme_real" target="_blank" class="social-link">
+            <img src="images/godblessme.jpg" alt="Twitter 5">
+        </a>
+        <a href="https://x.com/SaiMoo_n" target="_blank" class="social-link">
+            <img src="saimon.jpg" alt="Twitter 6">
+        </a>
+    </div>
+    <canvas id="gameCanvas" width="1200" height="800"></canvas>
+    <div id="howToPlayModal">
+        <p>How to play: Use A/D to move, Space to jump. <br>Jump on opponents and earn points!</p>
+        <button id="closeModalBtn">Close</button>
+    </div>
+    <div id="gameOverModal">
+        <p>Game Over! Score: <span id="finalScore"></span></p>
+        <p>Last Score: <span id="lastScore">0</span></p>
+        <button id="restartBtn">Restart</button>
+    </div>
+    <audio id="mainMenuMusic" loop src="main_menu_music.mp3"></audio>
+    <audio id="backgroundMusic" loop src="background_music.mp3"></audio>
+    <audio id="deathSound" src="death_sound.mp3"></audio>
+    <audio id="jumpSound" src="jump_sound.mp3"></audio>
+    <script src="game.js"></script>
+</body>
+</html>
