@@ -1,4 +1,4 @@
-main_menu_music.mp3console.log("Checking lastScoreElement:", document.getElementById("lastScore"));
+mainMenuMusic.mp3console.log("Checking lastScoreElement:", document.getElementById("lastScore"));
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 const mainScreen = document.getElementById("mainScreen");
