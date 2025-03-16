@@ -353,7 +353,7 @@ window.addEventListener("keyup", (e) => (keys[e.code] = false));
 document.addEventListener("click", function() {
     const mainMenuMusic = document.getElementById("mainMenuMusic");
     mainMenuMusic.play()
-        .then(() => console.log
+        .then(() => console.log("Main menu music started successfully"))
         .catch(error => console.log("Playback error:", error));
 }, { once: true });
 
