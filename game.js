@@ -353,8 +353,8 @@ window.addEventListener("keyup", (e) => (keys[e.code] = false));
 document.addEventListener("click", function() {
     const mainMenuMusic = document.getElementById("mainMenuMusic");
     mainMenuMusic.play()
-        .then(() => console.log("Музыка главного меню воспроизводится"))
-        .catch(error => console.log("Ошибка воспроизведения:", error));
+        .then(() => console.log
+        .catch(error => console.log("Playback error:", error));
 }, { once: true });
 
 howToPlayBtn.addEventListener("click", () => {
@@ -590,8 +590,8 @@ function restartGame() {
     backgroundMusic.pause();
     backgroundMusic.currentTime = 0;
     mainMenuMusic.play()
-    .then(() => console.log("Музыка главного меню запущена после рестарта"))
-    .catch(error => console.error("Ошибка при запуске музыки главного меню:", error));
+    .then(() => console.log
+    .catch(error => console.error("Error when starting main menu music:", error));
     mainScreen.style.display = "flex";
     canvas.style.display = "none";
     gameOverModal.style.display = "none";
