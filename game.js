@@ -350,10 +350,9 @@ const keys = {};
 window.addEventListener("keydown", (e) => (keys[e.code] = true));
 window.addEventListener("keyup", (e) => (keys[e.code] = false));
 
-mainMenuMusic.play();
 document.addEventListener("click", function() {
-    audio.play().catch(error => {
-        console.log("Ошибка воспроизведения:", error);
+    mainMenuMusic.play().catch(error => {
+        console.log("Ошибка воспроизведения музыки главного меню:", error);
     });
 }, { once: true });
 
