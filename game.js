@@ -100,28 +100,32 @@ class Player extends Entity {
         this.imageLeft = playerImageLeft;
     }
 
-    handleInput(keys) {
-        if (this.isDead) return;
+   handleInput(keys) {
+    if (this.isDead) return;
 
-        this.xSpeed = 0;
-        if (keys["KeyA"]) {
-            this.xSpeed = -this.speed;
-            this.image = this.imageLeft;
-        }
-        if (keys["KeyD"]) {
-            this.xSpeed = this.speed;
-            this.image = this.imageRight;
-        }
-        if (!keys["KeyA"] && !keys["KeyD"]) {
-            this.image = this.imageRight;
-        }
-        if (this.isGrounded && keys["Space"]) {
-            this.isGrounded = false;
-            this.ySpeed = this.jumpSpeed;
-            jumpSound.currentTime = 0;
-            jumpSound.play();
-        }
+    this.xSpeed = 0;
+    // Движение влево: A или стрелка влево
+    if (keys["KeyA"] || keys["ArrowLeft"]) {
+        this.xSpeed = -this.speed;
+        this.image = this.imageLeft;
     }
+    // Движение вправо: D или стрелка вправо
+    if (keys["KeyD"] || keys["ArrowRight"]) {
+        this.xSpeed = this.speed;
+        this.image = this.imageRight;
+    }
+    // Если нет движения, устанавливаем изображение вправо
+    if (!keys["KeyA"] && !keys["KeyD"] && !keys["ArrowLeft"] && !keys["ArrowRight"]) {
+        this.image = this.imageRight;
+    }
+    // Прыжок: пробел или стрелка вверх
+    if (this.isGrounded && (keys["Space"] || keys["ArrowUp"])) {
+        this.isGrounded = false;
+        this.ySpeed = this.jumpSpeed;
+        jumpSound.currentTime = 0;
+        jumpSound.play();
+    }
+}
 
     update(deltaTime) {
         this.x += this.xSpeed * deltaTime * 60;
